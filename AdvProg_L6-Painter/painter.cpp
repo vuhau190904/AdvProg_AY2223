@@ -47,7 +47,8 @@ void Painter::jumpBackward(int numPixel)
 ***/       
 void Painter::turnLeft(double degree)
 {
-    double angle = (this->angle + degree) % 360.0;
+    double angle = (this->angle + degree);
+    angle = fmod(angle, 360);
     setAngle(angle);
 }
 
@@ -60,8 +61,7 @@ void Painter::turnLeft(double degree)
 ***/     
 void Painter::turnRight(double degree)
 {
-    double angle = ((this->angle - degree) % 360.0 + 360.0) % 360.0;
-    setAngle(angle);  
+     turnLeft(-degree);
 }
 
 /***  
